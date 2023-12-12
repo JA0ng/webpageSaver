@@ -41,13 +41,16 @@ while true; do
     exit 1
   fi
 
+  # Extract title from the webpage
+  title=$(curl -s "$url" | grep -o '<title>[^<]*' | sed -E 's/<title>([^<]*)<\/title>/\1/' | sed -E 's/^[[:space:]]+//;s/[[:space:]]+$//;s/<[^>]+>//g')
+
   # Create timestamp for the filename
   timestamp=$(date +"%Y%m%d%H%M%S")
 
   # Use curl to download the webpage
-  curl -o "${SAVE_DIRECTORY}/page_${timestamp}.html" "$url"
+  curl -o "${SAVE_DIRECTORY}/${title}_${timestamp}.html" "$url"
 
-  echo "Webpage saved as ${SAVE_DIRECTORY}/page_${timestamp}.html"
+  echo "Webpage saved as ${SAVE_DIRECTORY}/${title}_${timestamp}.html"
 
   # Ask the user if they want to download another website
   echo -n "Do you want to download another website? (y/n): "
