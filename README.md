@@ -23,3 +23,8 @@ This script is a simple webpage downloader that uses `curl` to download webpages
 ## Configuration
 - The script uses a configuration file (config.txt) to store the default save directory. If the file doesn't exist, the script will prompt you to enter the directory.
 - Modify the script or configuration file to customize the behavior according to your preferences.
+
+## License
+
+This script is released under the [MIT License](MITLicense.txt).
+
